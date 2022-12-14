@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\index;
+namespace Modules\product;
 
 use Slim\App;
 use Psr\Container\ContainerInterface;
@@ -25,8 +25,8 @@ final class Main
     }
 
     public function __invoke(Request $request, Response $response): Response {
-		$curtemplate = $this->global['template'];
-		$module = $this->container->get('settings.modules') .'/index';
+		$curtemplate = $this->global['template'] ;
+		$module = $this->container->get('settings.modules') .'/product';
 		$language = (!empty($request->getAttribute('locale')) ? $request->getAttribute('locale') : $request->getAttribute('language'));
 		$lang = new Translator($language, $module);
 		$langs = $lang->get();
@@ -38,6 +38,7 @@ final class Main
 		//$response->getBody()->write($request->getAttribute('language'));
 		//return $response;
 		//echo $request->getAttribute('language');
-        return $this->twig->render($response, 'index.twig', $viewData);
+
+        return $this->twig->render($response,  'product.twig' , $viewData);
     }
 }
