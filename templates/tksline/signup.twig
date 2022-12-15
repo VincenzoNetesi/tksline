@@ -38,6 +38,7 @@
 
     </head>
 	<body>
+<div id="register">
 				<!-- HEADER -->
 				<header>
 					<!-- TOP HEADER -->
@@ -66,7 +67,7 @@
 											<div class="col-md-3">
 												<div class="header-logo">
 													<a href="#" class="logo">
-											<img width="130" height="70" src="./img/logo.png">
+									<img width="130" height="70" src="{{ basepath }}/templates/tksline/img/logo.png">
 											</a>
 											</div>
 											</div>
@@ -190,13 +191,15 @@
 				<!-- row -->
 				<div class="row">
 					<div class="col-md-12">
-						<h3 class="breadcrumb-header">Regular Page</h3>
+						<h3 class="breadcrumb-header">Registrati</h3>
 						<ul class="breadcrumb-tree">
 							<li><a href="#">Home</a></li>
-							<li class="active">Blank</li>
+							<li class="active">Registrati</li>
 						</ul>
 					</div>
+
 				</div>
+		
 				<!-- /row -->
 			</div>
 			<!-- /container -->
@@ -204,11 +207,115 @@
 		<!-- /BREADCRUMB -->
 
 		<!-- SECTION -->
-		<div class="section">
+		<div class="section section-style">
 			<!-- container -->
 			<div class="container">
 				<!-- row -->
-				<div class="row">
+				<div class="row d-flex justify-content-center">
+					<div class="col-md-6">
+							<!-- Billing Details -->
+						<div class="billing-details">
+							<div class="section-title">
+								<h3 class="title">Registrati</h3>
+							</div>
+			
+
+        <form class="needs-validation-registrati" novalidate @submit="checkFormRegister($event)">
+
+            <label v-if="!isCompagnia" class="mt-3 text-secondary" for="nome-registrati-singolo">Nome</label>
+            <input v-if="!isCompagnia" @change="checkFormRegister" v-model="formRegister.nome" required autocomplete
+                name="nome-registrati-singolo" class="form-control" type="text">
+				<br />
+            <label v-if="!isCompagnia" class="mt-1 text-secondary" for="cognome-registrati">Cognome</label>
+            <input v-if="!isCompagnia" @change="checkFormRegister" v-model="formRegister.cognome"
+                name="cognome-registrati" required autocomplete class="form-control " type="text">
+
+<br />
+            <label class="mt-1 text-secondary" for="telefono-registrati">Telefono</label>
+            <input name="telefono-registrati" @change="checkFormRegister" autocomplete class="form-control"
+                v-model="formRegister.telefono" required type="tel"
+                pattern="^(\((00|\+)39\)|(00|\+)39)?(38[890]|34[4-90]|36[680]|33[13-90]|32[89]|35[01]|37[019])(\s?\d{3}\s?\d{3,4}|\d{6,7})$">
+      <br />
+	        <label class="mt-1 text-secondary" for="email-registrati">Email</label>
+            <input name="email-registrati" @change="checkFormRegister" autocomplete class="form-control"
+                v-model="formRegister.email" required type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+            <br />
+			<label class="mt-1 text-secondary" for="password-registrati">Password</label>
+            <input name="password-register" @change="checkFormRegister" required autocomplete class="form-control "
+                v-model="formRegister.password" type="password"
+                pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{6,}$">
+            <br />
+			<label class="mt-1 text-secondary" for="indirizzo-registrati">Via e numero civico</label>
+            <input name="indirizzo-registrati" @change="checkFormRegister" required autocomplete class="form-control"
+                v-model="formRegister.indirizzo" type="text">
+
+            <div class="row justify-content-between align-items-center">
+<br />
+                <label class="col-md-6 mt-1 text-secondary" for="citta-registrati">Citta
+                    <select name="citta-registrati" @change="checkFormRegister" v-model="formRegister.citta" required
+                        autocomplete class="form-control">
+                        <option selected disabled value="">Scegli...</option>
+                        <option>Arezzo</option>
+                        <option>Atri</option>
+                    </select>
+					</label>
+
+                <label class="col-md-6 mt-1 text-secondary" for="cap-registrati">Cap
+                    <select v-model="formRegister.cap" @change="checkFormRegister" required name="cap-registrati"
+                        autocomplete class="form-control">
+                        <option selected disabled value="">Scegli...</option>
+                        <option>11111</option>
+                        <option>22222</option>
+                    </select>
+                </label>
+            </div>
+            <div class="form-check">
+			<br />
+                <label for="termini" class=" text-secondary mt-3">
+
+                    <input @change="checkFormRegister" v-on:input="formRegister.termini = true"
+                        :value="formRegister.termini" :checked="formRegister.termini === true" class="form-check-input"
+                        required name="termini" type="checkbox" />
+                    Accetto i termini e le
+                    condizioni di uso
+                </label>
+
+                <div class="invalid-feedback text-error">
+                    Assicurati di accettare i termini e le condizioni di utilizzo
+                </div>
+            </div>
+
+            <p class="mt-3 text-danger" v-if="errorsRegister.length">
+			     <br />
+                <b>Perfavore correggi i seguenti errori:</b>
+                <br />
+                <br />
+            <ul style="" class=" text-danger text-error">
+                <li v-for="error in errorsRegister">{_ error _}</li>
+            </ul>
+            </p>
+<br />
+            <button type="submit" @click="submitRegister = true, firstSubmit = true"
+                style="max-width:fit-content;margin-left:auto;margin-right:auto;z-index:800000000000000;"
+				class="primary-btn order-submit"> Registrati</button>
+
+
+        </form>
+ 
+					
+					</div>
+					</div>
+					<div class="col-md-6" style="
+						display: flex;
+    					flex-direction: column;
+    					justify-content: center;
+    					text-align: center;
+    					min-height: 24rem;">
+						<h3 style="z-index:800000000000000;"class="breadcrumb-header">Hai già un'account?</h3>
+				<a href="#" style="max-width:fit-content;margin-left:auto;margin-right:auto;z-index:800000000000000;"class="primary-btn order-submit">Login</a>
+
+					</div>
+					
 				</div>
 				<!-- /row -->
 			</div>
@@ -251,7 +358,7 @@
 			<!-- /container -->
 		</div>
 		<!-- /NEWSLETTER -->
-
+</div>
 		<!-- FOOTER -->
 		<footer id="footer">
 			<!-- top footer -->
@@ -360,7 +467,7 @@
 		<script src="{{ basepath }}/templates/tksline/js/nouislider.min.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/jquery.zoom.min.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/jquery-nice-select-min.js"></script>
-		<script src="{{ basepath }}/templates/tksline/js/vue/index.js"></script>
+		<script src="{{ basepath }}/templates/tksline/js/vue/signup.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/main.js"></script>
 
 	</body>
