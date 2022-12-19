@@ -34,19 +34,19 @@
 
 			if ($(".current").text().toLowerCase().trim() == "italiano") {
 				$(
-					"<style type='text/css' class='it-flag'>.current:after { background:url('templates/dailywork/assets/img/ita.svg');background-position: center; background-size: contain !important; }</style>"
+					"<style type='text/css' class='it-flag'>.current:after { background:url('templates/tksline/img/ita.svg');background-position: center; background-size: contain !important; }</style>"
 				).appendTo("head");
 			}
 
 			if ($(".current").text().toLowerCase().trim() == "english") {
 				$(
-					"<style type='text/css' class='en-flag'>.current:after { background:url('templates/dailywork/assets/img/en.svg'); background-position: center; background-size: contain !important; }</style>"
+					"<style type='text/css' class='en-flag'>.current:after { background:url('templates/tksline/img/en.svg'); background-position: center; background-size: contain !important; }</style>"
 				).appendTo("head");
 			}
 
 			if ($(".current").text().toLowerCase().trim() == "dutch") {
 				$(
-					"<style type='text/css' class='nl-flag'>.current:after { background:url('templates/dailywork/assets/img/nl.svg'); background-position: center; background-size: contain !important; }</style>"
+					"<style type='text/css' class='nl-flag'>.current:after { background:url('templates/tksline/img/nl.svg'); background-position: center; background-size: contain !important; }</style>"
 				).appendTo("head");
 			}
 
@@ -55,21 +55,21 @@
 					$("style.en-flag").remove();
 					$("style.nl-flag").remove();
 					$(
-						"<style type='text/css' class='it-flag'>.current:after { background:url('templates/dailywork/assets/img/ita.svg');background-position: center; background-size: contain !important; }</style>"
+						"<style type='text/css' class='it-flag'>.current:after { background:url('templates/tksline/img/ita.svg');background-position: center; background-size: contain !important; }</style>"
 					).appendTo("head");
 				}
 				if ($(this).text().toLowerCase().trim() == "dutch") {
 					$("style.en-flag").remove();
 					$("style.it-flag").remove();
 					$(
-						"<style type='text/css' class='nl-flag'>.current:after { background:url('templates/dailywork/assets/img/nl.svg');background-position: center; background-size: contain !important; }</style>"
+						"<style type='text/css' class='nl-flag'>.current:after { background:url('templates/tksline/img/nl.svg');background-position: center; background-size: contain !important; }</style>"
 					).appendTo("head");
 				}
 				if ($(this).text().toLowerCase().trim() == "english") {
 					$("style.it-flag").remove();
 					$("style.nl-flag").remove();
 					$(
-						"<style type='text/css' class='en-flag'>.current:after { background:url('templates/dailywork/assets/img/en.svg'); background-position: center; background-size: contain !important; }</style>"
+						"<style type='text/css' class='en-flag'>.current:after { background:url('templates/tksline/img/en.svg'); background-position: center; background-size: contain !important; }</style>"
 					).appendTo("head");
 				}
 			});

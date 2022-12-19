@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8">
+	<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -10,6 +10,8 @@
 
 		<!-- Google font -->
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="{{ basepath }}/templates/tksline/css/nice-select.css">
 
 		<!-- Bootstrap -->
 		<link type="text/css" rel="stylesheet" href="{{ basepath }}/templates/tksline/css/bootstrap.min.css"/>
@@ -36,152 +38,185 @@
 
     </head>
 	<body>
-			<!-- HEADER -->
+	<div id="index" v-cloak>
 			<header>
-				<!-- TOP HEADER -->
-				<div id="top-header">
-					<div class="container">
-						<ul class="header-links pull-left">
+			<!-- TOP HEADER -->
+			<div id="top-header">
+				<div class="container">
 					<ul class="header-links pull-left">
-							<li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-							<li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-							<li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
-							</ul>
-							<ul class="header-links pull-right">
-							<li><a href="#"><i class="fa fa-flag"></i> Lingua</a></li>
-							<li><a href="#"><i class="fa fa-user-o"></i> Il mio Account</a></li>
-							</ul>
-							</div>
-							</div>
-							<!-- /TOP HEADER -->
-							
-							<!-- MAIN HEADER -->
-							<div id="header">
-								<!-- container -->
-								<div class="container">
-									<!-- row -->
-									<div class="row">
-										<!-- LOGO -->
-										<div class="col-md-3">
-											<div class="header-logo">
-												<a href="#" class="logo">
-									<img width="130" height="70" src="{{ basepath }}/templates/tksline/img/logo.png">
-										</a>
-										</div>
-										</div>
-										<!-- /LOGO -->
-										
-										<!-- SEARCH BAR -->
-										<div class="col-md-6">
-											<div class="header-search">
-												<form>
-										<input class="input" placeholder="Cerca qui">
-										<button class="search-btn">Cerca</button>
-										</form>
-										</div>
-										</div>
-										<!-- /SEARCH BAR -->
-										
-										<!-- ACCOUNT -->
-										<div class="col-md-3 clearfix">
-											<div class="header-ctn">
-												<!-- Wishlist -->
-												<div>
-													<a href="#">
-														<i class="fa fa-heart-o"></i>
-											<span>Preferiti</span>
-											<div class="qty">2</div>
-											</a>
-											</div>
-											<!-- /Wishlist -->
-											
-											<!-- Cart -->
-											<div class="dropdown">
-												<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-													<i class="fa fa-shopping-cart"></i>
-											<span>Carrello</span>
-											<div class="qty">3</div>
-											</a>
-											<div class="cart-dropdown">
-												<div class="cart-list">
-													<div class="product-widget">
-														<div class="product-img">
-														<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVrOwGvMU_XKE-RtN0BMH3wAbD-wV0vU7Zkw&usqp=CAU" alt="">
-														</div>
-														<div class="product-body">
-															<h3 class="product-name"><a href="#">product name goes here</a></h3>
-															<h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-														</div>
-														<button class="delete"><i class="fa fa-close"></i></button>
-														</div>
-														
-														<div class="product-widget">
-															<div class="product-img">
-														<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVrOwGvMU_XKE-RtN0BMH3wAbD-wV0vU7Zkw&usqp=CAU" alt="">
-														</div>
-														<div class="product-body">
-															<h3 class="product-name"><a href="#">product name goes here</a></h3>
-															<h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-														</div>
-														<button class="delete"><i class="fa fa-close"></i></button>
-														</div>
-														</div>
-														<div class="cart-summary">
-												<small>Totale di 3 prodotto(i)</small>
-												<h5>TOTALE: $2940.00</h5>
-												</div>
-												<div class="cart-btns">
-												<a href="#">Vai a carrello</a>
-												<a href="#">Checkout <i class="fa fa-arrow-circle-right"></i></a>
-												</div>
-												</div>
-												</div>
-												<!-- /Cart -->
-												
-												<!-- Menu Toogle -->
-												<div class="menu-toggle">
-													<a href="#">
-														<i class="fa fa-bars"></i>
-														<span>Menu</span>
-													</a>
-												</div>
-												<!-- /Menu Toogle -->
-												</div>
-												</div>
-												<!-- /ACCOUNT -->
-												</div>
-												<!-- row -->
-												</div>
-												<!-- container -->
-												</div>
-												<!-- /MAIN HEADER -->
-												</header>
-												<!-- /HEADER -->
-												
-												<!-- NAVIGATION -->
-												<nav id="navigation">
-													<!-- container -->
-													<div class="container">
-														<!-- responsive-nav -->
-														<div id="responsive-nav">
-															<!-- NAV -->
-															<ul class="main-nav nav navbar-nav">
-																<li class="active"><a href="#">Home</a></li>
-							<li><a href="#">Faretti in gesso</a></li>
-							<li><a href="#">Lampade da incasso</a></li>
-							<li><a href="#">Cornici per led</a></li>
-							<li><a href="#">Lampadari e Applique</a></li>
-							<li><a href="#">Lampade di emergenza</a></li>
-							<li><a href="#">Strisce led</a></li>
-							</ul>
-							<!-- /NAV -->
-							</div>
-							<!-- /responsive-nav -->
-							</div>
-							<!-- /container -->
-							</nav>
-							<!-- /NAVIGATION -->
+						<li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
+						<li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+					</ul>
+					<ul class="header-links pull-right">
+						<li>		<select id="lang" class="selectpicker" data-style="btn-info" data-width="auto">
+									<option data-icon="flag flag-it" value="it" {% if language == 'it' %}selected{% endif %}>Italiano</option>
+									<option data-icon="flag flag-en" value="en" {% if language == 'en' %}selected{% endif %}>English</option>
+                                    <option data-icon="flag flag-nl" value="nl" {% if language == 'nl' %}selected{% endif %}>Dutch</option>
+								</select></li>
+						<li><a href="#"><i class="fa fa-user-o"></i> Il mio Account</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- /TOP HEADER -->
 
+			<!-- MAIN HEADER -->
+			<div id="header">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<!-- LOGO -->
+						<div class="col-md-3">
+							<div class="header-logo">
+								<a href="#" class="logo">
+									<img width="130" height="70" src="{{ basepath }}/templates/tksline/img/logo.png">
+								</a>
+							</div>
+						</div>
+						<!-- /LOGO -->
+
+						<!-- SEARCH BAR -->
+						<div class="col-md-6">
+							<div class="header-search">
+								<form action="store" method="get">
+								<input class="input"   type="text"
+        @input="debounceSearch"
+        placeholder="Cerca prodotti..."
+        name="s"/>
+								<button class="search-btn">Cerca</button>
+								</form>
+								<span style="position:absolute;width:100%;padding:1rem;z-index: 10"
+      v-if="typing != null"
+      >caricamento...</span
+    >
+    <ul
+      id="pol"
+      v-if="searchResults && searchResults.length && !typing"
+      style="z-index: 10; max-height: 20rem; overflow-y: scroll;width:100%;    background: white;
+    color: black;
+    border: 1px solid red;position:absolute;"
+    >
+      <li
+        :key="result.id"
+		style="padding:1rem;"
+        v-for="(result, index) in searchResults"
+      >
+        <div :key="index">
+          <img
+            class="mr-2"
+            width="45"
+            height="45"
+            src="https://vincenzo.codes/static/wetcode-5c5f5cb8e4efb82d0eca6eaf06d3bff0.gif"
+            alt="result.title"
+          /><span style="color:black">{{ result.title }}</span>
+        </div>
+      </li>
+    </ul>
+							</div>
+							    
+						</div>
+						<!-- /SEARCH BAR -->
+
+						<!-- ACCOUNT -->
+						<div class="col-md-3 clearfix">
+							<div class="header-ctn">
+								<!-- Wishlist -->
+								<div>
+									<a href="#">
+										<i class="fa fa-heart-o"></i>
+										<span>Preferiti</span>
+										<div class="qty">2</div>
+									</a>
+								</div>
+								<!-- /Wishlist -->
+
+								<!-- Cart -->
+								<div class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+										<i class="fa fa-shopping-cart"></i>
+										<span>Carrello</span>
+										<div class="qty">3</div>
+									</a>
+									<div class="cart-dropdown">
+										<div class="cart-list">
+											<div class="product-widget">
+												<div class="product-img">
+													<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVrOwGvMU_XKE-RtN0BMH3wAbD-wV0vU7Zkw&usqp=CAU" alt="">
+												</div>
+												<div class="product-body">
+													<h3 class="product-name"><a href="#">product name goes here</a></h3>
+													<h4 class="product-price"><span class="qty">1x</span>{_ numberFormat(800) _}</h4>
+												</div>
+												<button class="delete"><i class="fa fa-close"></i></button>
+											</div>
+
+											<div class="product-widget">
+												<div class="product-img">
+													<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVrOwGvMU_XKE-RtN0BMH3wAbD-wV0vU7Zkw&usqp=CAU" alt="">
+												</div>
+												<div class="product-body">
+													<h3 class="product-name"><a href="#">product name goes here</a></h3>
+													<h4 class="product-price"><span class="qty">3x</span>{_ numberFormat(800) _}</h4>
+												</div>
+												<button class="delete"><i class="fa fa-close"></i></button>
+											</div>
+										</div>
+										<div class="cart-summary">
+											<small>Totale di 3 prodotto(i)</small>
+											<h5>TOTALE: {_ numberFormat(800) _}</h5>
+										</div>
+										<div class="cart-btns">
+											<a href="#">Vai a carrello</a>
+											<a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+										</div>
+									</div>
+								</div>
+								<!-- /Cart -->
+
+								<!-- Menu Toogle -->
+								<div class="menu-toggle">
+									<a href="#">
+										<i class="fa fa-bars"></i>
+										<span>Menu</span>
+									</a>
+								</div>
+								<!-- /Menu Toogle -->
+							</div>
+						</div>
+						<!-- /ACCOUNT -->
+					</div>
+					<!-- row -->
+				</div>
+				<!-- container -->
+			</div>
+			<!-- /MAIN HEADER -->
+		</header>
+		<!-- /HEADER -->
+
+		<!-- NAVIGATION -->
+		<nav id="navigation">
+			<!-- container -->
+			<div class="container">
+				<!-- responsive-nav -->
+				<div id="responsive-nav">
+					<!-- NAV -->
+					<ul class="main-nav nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#">Faretti in gesso</a></li>
+						<li><a href="#">Lampade da incasso</a></li>
+						<li><a href="#">Cornici per led</a></li>
+						<li><a href="#">Lampadari e Applique</a></li>
+						<li><a href="#">Lampade di emergenza</a></li>
+						<li><a href="#">Strisce led</a></li>
+					</ul>
+					<!-- /NAV -->
+				</div>
+				<!-- /responsive-nav -->
+			</div>
+			<!-- /container -->
+		</nav>
+		<!-- /NAVIGATION -->
 		<!-- BREADCRUMB -->
 		<div id="breadcrumb" class="section">
 			<!-- container -->
@@ -258,7 +293,7 @@
 					<!-- Product details -->
 					<div class="col-md-5">
 						<div class="product-details">
-							<h2 class="product-name">product name goes here</h2>
+							<h2 class="product-name">Faro ad incastro</h2>
 							<div>
 								<div class="product-rating">
 									<i class="fa fa-star"></i>
@@ -267,11 +302,11 @@
 									<i class="fa fa-star"></i>
 									<i class="fa fa-star-o"></i>
 								</div>
-								<a class="review-link" href="#">10 recenzione(i) | Aggiungi una recensione</a>
+								<a class="review-link" href="#recensione-prodotti">10 recenzione(i) | Aggiungi una recensione</a>
 							</div>
 							<div>
-								<h3 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h3>
-								<span class="product-available">Dsiponibile</span>
+								<h3 class="product-price">{_ numberFormat(800) _} <del class="product-old-price">{_ numberFormat(800) _}</del></h3>
+								<span class="product-available">Disponibile</span>
 							</div>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
@@ -328,7 +363,7 @@
 							<ul class="tab-nav">
 								<li class="active"><a data-toggle="tab" href="#tab1">Descrizione</a></li>
 								<li><a data-toggle="tab" href="#tab2">Dettagli</a></li>
-								<li><a data-toggle="tab" href="#tab3">Recensioni (3)</a></li>
+								<li id="recensione-prodotti"><a data-toggle="tab" href="#tab3">Recensioni (3)</a></li>
 							</ul>
 							<!-- /product tab nav -->
 
@@ -556,7 +591,7 @@
 					</div>
 
 					<!-- product -->
-					<div class="col-md-3 col-xs-6">
+					<div v-for="(item, index) in prodottiUno.slice(1,5)" class="col-md-3 col-xs-6">
 						<div class="product">
 							<div class="product-img">
 								<img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcS74Trozo_502bv6p1xTsSnQbYnbwGfYeBC7Jxb8D_A2_obdjmfoc809shaK8Lj6BeQ-dyiG98GYUk&usqp=CAc"
@@ -567,115 +602,23 @@
 							</div>
 							<div class="product-body">
 								<p class="product-category">Categoria</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+								<h3 class="product-name"><a href="#">{_ item.title _}</a></h3>
+								<h4 class="product-price">{_ numberFormat(980) _} <del class="product-old-price">$990.00</del></h4>
 								<div class="product-rating">
 								</div>
 								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Aggiungi ai preferiti</span></button>
+									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Confronta prodotti</span></button>
 									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
 								</div>
 							</div>
 							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Aggiungi al carrello</button>
 							</div>
 						</div>
 					</div>
 					<!-- /product -->
 
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcS74Trozo_502bv6p1xTsSnQbYnbwGfYeBC7Jxb8D_A2_obdjmfoc809shaK8Lj6BeQ-dyiG98GYUk&usqp=CAc"
-									alt="">
-								<div class="product-label">
-									<span class="new">NEW</span>
-								</div>
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-								<div class="product-rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
-
-					<div class="clearfix visible-sm visible-xs"></div>
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcS74Trozo_502bv6p1xTsSnQbYnbwGfYeBC7Jxb8D_A2_obdjmfoc809shaK8Lj6BeQ-dyiG98GYUk&usqp=CAc"
-									alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-								<div class="product-rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcS74Trozo_502bv6p1xTsSnQbYnbwGfYeBC7Jxb8D_A2_obdjmfoc809shaK8Lj6BeQ-dyiG98GYUk&usqp=CAc"
-									alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-								<div class="product-rating">
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
 
 				</div>
 				<!-- /row -->
@@ -719,7 +662,7 @@
 			<!-- /container -->
 		</div>
 		<!-- /NEWSLETTER -->
-		
+		</div>
 		<!-- FOOTER -->
 		<footer id="footer">
 			<!-- top footer -->
@@ -816,11 +759,19 @@
 		<!-- /FOOTER -->
 
 		<!-- jQuery Plugins -->
+		<script src="https://unpkg.com/vue-lazyload@1.3.3/vue-lazyload.js">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js">
+        </script>
+
+
 		<script src="{{ basepath }}/templates/tksline/js/jquery.min.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/bootstrap.min.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/slick.min.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/nouislider.min.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/jquery.zoom.min.js"></script>
+		<script src="{{ basepath }}/templates/tksline/js/jquery-nice-select-min.js"></script>
+		<script src="{{ basepath }}/templates/tksline/js/vue/index.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/main.js"></script>
 
 	</body>

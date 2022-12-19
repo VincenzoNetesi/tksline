@@ -2,7 +2,6 @@
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- 
  */ /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
 	font-family: sans-serif;
@@ -4084,11 +4083,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 	display: block;
 	padding: 10px 15px;
 }
-.nav > li > a:focus,
-.nav > li > a:hover {
-	text-decoration: none;
-	background-color: #eee;
-}
 .nav > li.disabled > a {
 	color: #777;
 }
@@ -6206,6 +6200,9 @@ button.close {
 	background: 0 0;
 	border: 0;
 }
+.modal-open {
+	overflow: hidden;
+}
 
 .modal.fade .modal-dialog {
 	-webkit-transition: -webkit-transform 0.3s ease-out;
@@ -6222,10 +6219,7 @@ button.close {
 	-o-transform: translate(0, 0);
 	transform: translate(0, 0);
 }
-.modal-open .modal {
-	overflow-x: hidden;
-	overflow-y: auto;
-}
+
 .modal-dialog {
 	position: relative;
 	width: auto;
@@ -7115,10 +7109,5 @@ button.close {
 	.hidden-print {
 		display: none !important;
 	}
-}
-.bootstrap-select > select.bs-select-hidden,
-select.bs-select-hidden,
-select.selectpicker {
-	display: none !important ;
 }
 /*# sourceMappingURL=bootstrap.min.css.map */

@@ -13,11 +13,18 @@
 	});
 
 	/* 6. Nice Selectorp  */
-	var nice_Select = $("header select");
+	var nice_Select = $("#navigation select");
 	if (nice_Select.length) {
 		nice_Select.niceSelect();
 	}
-
+	$(".your-class").slick({
+		dots: true,
+		infinite: true,
+		speed: 500,
+		fade: true,
+		cssEase: "linear",
+		appendDots: false,
+	});
 	/////////////////////////////////////////
 
 	// Products Widget Slick
@@ -69,11 +76,7 @@
 		],
 	});
 
-	// Product img zoom
-	var zoomMainProduct = document.getElementById("product-main-img");
-	if (zoomMainProduct) {
-		$("#product-main-img .product-preview").zoom();
-	}
+
 
 	/////////////////////////////////////////
 
