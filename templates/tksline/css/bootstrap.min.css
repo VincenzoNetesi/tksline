@@ -1288,6 +1288,11 @@ h6 {
 }
 p {
 	margin: 0 0 10px;
+	font-weight: 500;
+}
+label,span,div {
+		font-weight: 500 !important;
+
 }
 .lead {
 	margin-bottom: 20px;
@@ -1599,7 +1604,7 @@ pre code {
 }
 @media (min-width: 1200px) {
 	.container {
-		width: 1170px;
+		width: 1050px;
 	}
 }
 .container-fluid {

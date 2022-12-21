@@ -82,13 +82,15 @@
 				
 							<div class="header-search">
 								<form action="store" method="get">
-								<input class="input"   type="text"
+								<input class="input form-control"   type="text"
         @input="debounceSearch"
         placeholder="Cerca (scrivi almeno 3 caratteri)"
         name="s"/>
 							
 								</form>
-								<span style="position:absolute;width:100%;padding:1rem;z-index: 10"
+								<span    style="z-index: 10; width:100%;background: white;
+    color: black;
+    position:absolute;"
       v-if="typing != null"
       >caricamento...</span
     >
@@ -97,21 +99,21 @@
       v-if="searchResults && searchResults.length && !typing"
       style="z-index: 10; max-height: 20rem; overflow-y: scroll;width:100%;    background: white;
     color: black;
-    border: 1px solid red;position:absolute;"
+    position:absolute;"
     >
       <li
         :key="result.id"
 		style="padding:1rem;"
         v-for="(result, index) in searchResults"
       >
-        <div :key="index">
+        <div :key="index" >
           <img
             class="mr-2"
-            width="45"
+            width="55"
             height="45"
-            src="https://vincenzo.codes/static/wetcode-5c5f5cb8e4efb82d0eca6eaf06d3bff0.gif"
+           src="{{ basepath }}/templates/tksline/img/product-image.png"
             alt="result.title"
-          /><span style="color:black">{{ result.title }}</span>
+          /><span style="color:black;display:flex;flex-direction:column;">{_ result.title _} <span style="color:black;display:flex">{_ result.description.substring(1,20) + "..." _}&nbsp;&nbsp;&nbsp;<b style="margin-left:auto">{_ numberFormat(result.price) _}</b></span></span>
         </div>
       </li>
     </ul>
@@ -216,28 +218,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
 <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M112 0C85.5 0 64 21.5 64 48V96H16c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 272c8.8 0 16 7.2 16 16s-7.2 16-16 16H64 48c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 240c8.8 0 16 7.2 16 16s-7.2 16-16 16H64 16c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 208c8.8 0 16 7.2 16 16s-7.2 16-16 16H64V416c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V288 256 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H112zM544 237.3V256H416V160h50.7L544 237.3zM160 464c-26.5 0-48-21.5-48-48s21.5-48 48-48s48 21.5 48 48s-21.5 48-48 48zm368-48c0 26.5-21.5 48-48 48s-48-21.5-48-48s21.5-48 48-48s48 21.5 48 48z"/></svg>
       <div class="content-container">
-        <p>Trasporto Gratuito<span>Per ordini superiori $30+</span></p>
+        <p>Trasporto Gratuito<span>Per ordini superiori a € 59</span></p>
       </div>
     </div>
   </div>
   <div class="simple-container">
     <div class="all-content-container">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M156.6 384.9L125.7 354c-8.5-8.5-11.5-20.8-7.7-32.2c3-8.9 7-20.5 11.8-33.8L24 288c-8.6 0-16.6-4.6-20.9-12.1s-4.2-16.7 .2-24.1l52.5-88.5c13-21.9 36.5-35.3 61.9-35.3l82.3 0c2.4-4 4.8-7.7 7.2-11.3C289.1-4.1 411.1-8.1 483.9 5.3c11.6 2.1 20.6 11.2 22.8 22.8c13.4 72.9 9.3 194.8-111.4 276.7c-3.5 2.4-7.3 4.8-11.3 7.2v82.3c0 25.4-13.4 49-35.3 61.9l-88.5 52.5c-7.4 4.4-16.6 4.5-24.1 .2s-12.1-12.2-12.1-20.9V380.8c-14.1 4.9-26.4 8.9-35.7 11.9c-11.2 3.6-23.4 .5-31.8-7.8zM384 168c22.1 0 40-17.9 40-40s-17.9-40-40-40s-40 17.9-40 40s17.9 40 40 40z"/></svg>     <div class="content-container">
-        <p>Consegna veloce<span>GMO, MSG and Gluten Free</span></p>
+        <p>Consegna veloce<span>in 24/48 ore</span></p>
       </div>
     </div>
   </div>
   <div class="simple-container scplus">
     <div class="all-content-container">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 352C293.2 352 319.2 334.5 334.4 318.1C343.3 308.4 358.5 307.7 368.3 316.7C378 325.7 378.6 340.9 369.6 350.6C347.7 374.5 309.7 400 256 400C202.3 400 164.3 374.5 142.4 350.6C133.4 340.9 133.1 325.7 143.7 316.7C153.5 307.7 168.7 308.4 177.6 318.1C192.8 334.5 218.8 352 256 352zM217.6 228.8L217.6 228.8L217.4 228.5C217.2 228.3 217 228 216.7 227.6C216 226.8 215.1 225.7 213.9 224.3C211.4 221.4 207.9 217.7 203.7 213.1C194.9 206.2 184.8 200 176 200C167.2 200 157.1 206.2 148.3 213.1C144.1 217.7 140.6 221.4 138.1 224.3C136.9 225.7 135.1 226.8 135.3 227.6C134.1 228 134.8 228.3 134.6 228.5L134.4 228.8L134.4 228.8C132.3 231.6 128.7 232.7 125.5 231.6C122.2 230.5 120 227.4 120 224C120 206.1 126.7 188.4 136.6 175.2C146.4 162.2 160.5 152 176 152C191.5 152 205.6 162.2 215.4 175.2C225.3 188.4 232 206.1 232 224C232 227.4 229.8 230.5 226.5 231.6C223.3 232.7 219.7 231.6 217.6 228.8V228.8zM377.6 228.8L377.4 228.5C377.2 228.3 377 228 376.7 227.6C376 226.8 375.1 225.7 373.9 224.3C371.4 221.4 367.9 217.7 363.7 213.1C354.9 206.2 344.8 200 336 200C327.2 200 317.1 206.2 308.3 213.1C304.1 217.7 300.6 221.4 298.1 224.3C296.9 225.7 295.1 226.8 295.3 227.6C294.1 228 294.8 228.3 294.6 228.5L294.4 228.8L294.4 228.8C292.3 231.6 288.7 232.7 285.5 231.6C282.2 230.5 280 227.4 280 224C280 206.1 286.7 188.4 296.6 175.2C306.4 162.2 320.5 152 336 152C351.5 152 365.6 162.2 375.4 175.2C385.3 188.4 392 206.1 392 224C392 227.4 389.8 230.5 386.5 231.6C383.3 232.7 379.7 231.6 377.6 228.8L377.6 228.8zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"/></svg>    <div class="content-container">
-        <p>Garanzia 2 anni<span>Guarantee</span></p>
+        <p>Garanzia 2 anni<span>con Reso Gratuito</span></p>
       </div>
     </div>
   </div>
   <div class="simple-container scplus">
     <div class="all-content-container">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M111.4 295.9c-3.5 19.2-17.4 108.7-21.5 134-.3 1.8-1 2.5-3 2.5H12.3c-7.6 0-13.1-6.6-12.1-13.9L58.8 46.6c1.5-9.6 10.1-16.9 20-16.9 152.3 0 165.1-3.7 204 11.4 60.1 23.3 65.6 79.5 44 140.3-21.5 62.6-72.5 89.5-140.1 90.3-43.4.7-69.5-7-75.3 24.2zM357.1 152c-1.8-1.3-2.5-1.8-3 1.3-2 11.4-5.1 22.5-8.8 33.6-39.9 113.8-150.5 103.9-204.5 103.9-6.1 0-10.1 3.3-10.9 9.4-22.6 140.4-27.1 169.7-27.1 169.7-1 7.1 3.5 12.9 10.6 12.9h63.5c8.6 0 15.7-6.3 17.4-14.9.7-5.4-1.1 6.1 14.4-91.3 4.6-22 14.3-19.7 29.3-19.7 71 0 126.4-28.8 142.9-112.3 6.5-34.8 4.6-71.4-23.8-92.6z"/></svg>      <div class="content-container">
-        <p>Pagamenti sicuri<span>Guarantee</span></p>
+        <p>Pagamenti sicuri<span>online o alla consegna</span></p>
       </div>
     </div>
   </div>
@@ -922,7 +924,7 @@
 
 
 		<!-- FOOTER -->
-		<footer id="footer">
+		<footer id="footer" class="container">
 			<!-- top footer -->
 			<div class="section">
 				<!-- container -->
@@ -932,9 +934,9 @@
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
 								<ul class="footer-links">
-									<li>								<img width="110" height="75" src="{{ basepath }}/templates/tksline/img/tks-line.png" alt=""/>
+									<li>								<img width="140" height="75" src="{{ basepath }}/templates/tksline/img/tks-line.png" alt=""/>
 </li>
-									<li><strong>								TKSLINE.IT fa parte del gruppo:</br>VGF GROUP s.r.l</strong>
+									<li style="color:#fff"><strong>								TKSLINE.IT fa parte del gruppo:</br>VGF GROUP s.r.l</strong>
 </li>
 									<li>								<img width="110" height="45" src="{{ basepath }}/templates/tksline/img/vgf-group.png" alt=""/>
 </li>
@@ -989,7 +991,7 @@
 			<!-- /top footer -->
 
 			<!-- bottom footer -->
-			<div id="bottom-footer" class="section">
+			<div id="bottom-footer"style="margin:auto;">
 				<div class="container">
 					<!-- row -->
 					<div class="row">
@@ -1027,6 +1029,7 @@
 		<script src="{{ basepath }}/templates/tksline/js/nouislider.min.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/jquery.zoom.min.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/jquery-nice-select-min.js"></script>
+		<script src="{{ basepath }}/templates/tksline/js/vue/top_header.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/vue/index.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/main.js"></script>
 

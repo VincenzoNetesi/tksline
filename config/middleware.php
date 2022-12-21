@@ -28,7 +28,7 @@ return function (App $app) {
     $app->addRoutingMiddleware();
     
     // Add locale in url Middleware
-    $app->add(new Locale($app, $settings['locale'], $settings['languages']));
+    //$app->add(new Locale($app, $settings['locale'], $settings['languages']));
     
     $app->add(Alias::class);
     

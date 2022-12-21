@@ -1,5 +1,5 @@
 new Vue({
-	el: "#index",
+	el: "#top_header",
 
 	delimiters: ["{_", "_}"],
 
@@ -310,42 +310,7 @@ new Vue({
 					this.prodottiDue = res[1];
 					this.prodottiTre = res[2];
 				})
-				.then(() => {
-										Vue.nextTick(function () {
-											// Products Slick
-											$(".products-slick").each(function () {
-												var $this = $(this),
-													$nav = $this.attr("data-nav");
 
-												$this.slick({
-													slidesToShow: 4,
-													slidesToScroll: 1,
-													autoplay: true,
-													infinite: true,
-													speed: 300,
-													dots: false,
-													arrows: true,
-													appendArrows: $nav ? $nav : false,
-													responsive: [
-														{
-															breakpoint: 991,
-															settings: {
-																slidesToShow: 2,
-																slidesToScroll: 1,
-															},
-														},
-														{
-															breakpoint: 480,
-															settings: {
-																slidesToShow: 1,
-																slidesToScroll: 1,
-															},
-														},
-													],
-												});
-											});
-										});
-				})
 				.catch((error) => console.log(error));
 		},
 	},
@@ -368,8 +333,5 @@ new Vue({
 				}
 			}
 		});
-	},
-	mounted() {
-		this.mountAllProdotti();
 	},
 });

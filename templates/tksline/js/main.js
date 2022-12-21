@@ -13,10 +13,48 @@
 	});
 
 	/* 6. Nice Selectorp  */
-	var nice_Select = $("#navigation select");
+	var nice_Select = $("#lang");
 	if (nice_Select.length) {
 		nice_Select.niceSelect();
 	}
+	// Products Slick
+	$(".products-slick").each(function () {
+		var $this = $(this),
+			$nav = $this.attr("data-nav");
+
+		$this.slick({
+			slidesToShow: 4,
+			slidesToScroll: 1,
+			autoplay: true,
+			infinite: true,
+			speed: 300,
+			dots: false,
+			arrows: true,
+			appendArrows: $nav ? $nav : false,
+			responsive: [
+				{
+					breakpoint: 991,
+					settings: {
+						slidesToShow: 2,
+						slidesToScroll: 1,
+					},
+				},
+				{
+					breakpoint: 480,
+					settings: {
+						slidesToShow: 1,
+						slidesToScroll: 1,
+					},
+				},
+			],
+		});
+	});
+	/* 1. Language select */
+	$("#lang").on("change", function (e) {
+		Cookies.set("lang", $(this).val(), { expires: 30 });
+		window.location.reload(false);
+	});
+
 	$(".your-class").slick({
 		dots: true,
 		infinite: true,
@@ -76,9 +114,5 @@
 		],
 	});
 
-
-
 	/////////////////////////////////////////
-
-
 })(jQuery);
