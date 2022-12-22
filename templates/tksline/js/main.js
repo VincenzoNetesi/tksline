@@ -17,38 +17,7 @@
 	if (nice_Select.length) {
 		nice_Select.niceSelect();
 	}
-	// Products Slick
-	$(".products-slick").each(function () {
-		var $this = $(this),
-			$nav = $this.attr("data-nav");
 
-		$this.slick({
-			slidesToShow: 4,
-			slidesToScroll: 1,
-			autoplay: true,
-			infinite: true,
-			speed: 300,
-			dots: false,
-			arrows: true,
-			appendArrows: $nav ? $nav : false,
-			responsive: [
-				{
-					breakpoint: 991,
-					settings: {
-						slidesToShow: 2,
-						slidesToScroll: 1,
-					},
-				},
-				{
-					breakpoint: 480,
-					settings: {
-						slidesToShow: 1,
-						slidesToScroll: 1,
-					},
-				},
-			],
-		});
-	});
 	/* 1. Language select */
 	$("#lang").on("change", function (e) {
 		Cookies.set("lang", $(this).val(), { expires: 30 });
@@ -115,4 +84,26 @@
 	});
 
 	/////////////////////////////////////////
+	$(".navbar__toggle-menu").click(function () {
+		$(".navbar__menu").toggleClass("show");
+
+		if ($(".navbar__menu").hasClass("show")) {
+			$(".navbar__toggle-menu i").removeClass("fa-bars");
+			$(".navbar__toggle-menu i").addClass("fa-times");
+		} else {
+			$(".navbar__toggle-menu i").removeClass("fa-times");
+			$(".navbar__toggle-menu i").addClass("fa-bars");
+		}
+	});
+
+	$(".navbar__toggle-dropdown").click(function () {
+		$(".navbar__dropdown").toggleClass("show");
+
+		if ($(".navbar__dropdown").hasClass("show")) {
+			$(".navbar__toggle-dropdown").addClass("rotate");
+		} else {
+			$(".navbar__toggle-dropdown").removeClass("rotate");
+		}
+	});
+
 })(jQuery);
