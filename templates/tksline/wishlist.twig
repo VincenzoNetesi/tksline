@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<title>TKSLine - Vendita di faretti in gesso all'ingrosso</title>
+		<title>TKSLine - Preferiti</title>
 
 		<!-- Google font -->
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
@@ -48,10 +48,9 @@
     padding: 1rem 1.5rem;
     position: relative;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     height: 20rem;
 	justify-content:space-between;
-	border-top:1px solid #F2F2F4;
 	width: 100%%;
 
 }
@@ -60,7 +59,6 @@
 	display: flex;
     justify-content: space-between;
     flex-direction: row;
-    align-items: start;
     height: unset;
     align-self: center;
     justify-self: center;
@@ -101,7 +99,6 @@
 	<body>
 	{% include "partials/header.twig" %}
 
-
 		<!-- BREADCRUMB -->
 		<div id="breadcrumb" class="section container">
 			<!-- container -->
@@ -109,10 +106,10 @@
 				<!-- row -->
 				<div class="row">
 					<div class="col-md-12">
-						<h3 class="breadcrumb-header">Cart</h3>
+						<h3 class="breadcrumb-header">Wishlist</h3>
 						<ul class="breadcrumb-tree">
 							<li><a href="#">Home</a></li>
-							<li class="active"><a href="#">Carrello</a></li>
+							<li class="active">Wishlist</li>
 						</ul>
 					</div>
 				</div>
@@ -121,13 +118,13 @@
 			<!-- /container -->
 		</div>
 		<!-- /BREADCRUMB -->
-	<div id="index" v-cloak>
+
 		<!-- SECTION -->
-		<div class="section">
+		<div id="index" class="section">
 			<!-- container -->
-			<div class="container main_container">
+			<div class="container" style="margin: 2.5rem auto">
 				<!-- row -->
-				<div class="row col-md-8" style="background-color: unset;">
+				<div class="row col-md-12" style="background-color: unset;">
 				<div class="cart_product row" style="margin:1.5rem auto;background-color: #fff;align-items:center;">
 				<div class="cart_top col-sm-12 col-md-6 col-lg-6">
 					<img height="70"src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcS74Trozo_502bv6p1xTsSnQbYnbwGfYeBC7Jxb8D_A2_obdjmfoc809shaK8Lj6BeQ-dyiG98GYUk&usqp=CAc"
@@ -142,15 +139,7 @@
 				<p>Prezzo</p>
 				<p>{_ numberFormat(80) _}</p>
 				</div>
-				<div class="qty-label">
-									Quantità
-									<div class="input-number">
-										<input style="max-width:100px;max-height:40px;" type="number" value="1">
-										<span class="qty-up">+</span>
-										<span class="qty-down">-</span>
-									</div>
-								</div>
-								<div><p>Somma:</p> <div>{_ numberFormat(800) _}</div></div>
+	
 								<div> <label style="    width: 20px;
     height: 20px;
     top: 10px;
@@ -162,20 +151,7 @@
 				</div>
 				</div>
 				<!-- /row -->
-				<div class="col-md-4 margin-left" style="padding:1rem 1.5rem;background:#fff;"><h4>Totale</h4>
-				<p>Subtotale:  {_ numberFormat(110) _}</p>
-				<p>Discont:  -{_ numberFormat(40) _}</p>
-<div style="border-top:1px solid #f2f2f4">
-<span style="display:flex;justify-content:space-between;padding-top:1rem;">Totale: <strong style="float:left">{_ numberFormat(200) _}</strong></span>
-								<button onclick="window.location.href='http://localhost/tksline/perseo/checkout'"  style="margin-top:1.5rem;    width: 100%;
-    height: 40px;
-    font-weight: 700;
-    background: #D10024;
-    color: #FFF;
-    border: none;
-    border-radius: 40px 40px 40px 40px;"><i class="fa fa-shopping-cart"></i> Checkout</button>
-				</div>
-			</div>
+	
 			<!-- /container -->
 			
 		</div>
@@ -191,7 +167,7 @@
 						<div class="newsletter">
 							<p>Iscriviti alla nostra <strong>NEWSLETTER</strong></p>
 							<form>
-								<input class="input" type="email" placeholder="Enter Your Email">
+								<input class="input" type="email" placeholder="La tua Email">
 								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Iscriviti</button>
 							</form>
 							<ul class="newsletter-follow">
@@ -215,8 +191,8 @@
 			</div>
 			<!-- /container -->
 		</div>
+		</div>
 		<!-- /NEWSLETTER -->
-</div>
 	{% include "partials/footer.twig" %}
 
 
@@ -226,6 +202,7 @@
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js">
         </script>
 
+
 		<script src="{{ basepath }}/templates/tksline/js/jquery.min.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/bootstrap.min.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/slick.min.js"></script>
@@ -233,7 +210,7 @@
 		<script src="{{ basepath }}/templates/tksline/js/jquery.zoom.min.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/jquery-nice-select-min.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/vue/top_header.js"></script>
-		<script src="{{ basepath }}/templates/tksline/js/vue/cart.js"></script>
+		<script src="{{ basepath }}/templates/tksline/js/vue/wishlist.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/main.js"></script>
 
 	</body>

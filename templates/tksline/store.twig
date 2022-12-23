@@ -108,6 +108,7 @@ flex-wrap: wrap;
 	<body>
 	{% include "partials/header.twig" %}
 		<!-- BREADCRUMB -->
+		<div id="index" v-cloak>
 		<div id="breadcrumb" class="section container">
 			<!-- container -->
 			<div class="container">
@@ -116,8 +117,8 @@ flex-wrap: wrap;
 					<div class="col-md-12">
 						<ul class="breadcrumb-tree">
 							<li><a href="#">Home</a></li>
-							<li><a href="#">Faretti</a></li>
-							<li class="active">Faretti in gesso (35 Risultati)</li>
+							<li><a href="#">Categorie</a></li>
+							<li class="active">{_ categoryParam && categoryParam.toString().replace(/\-/g, " ") _} (35 Risultati)</li>
 						</ul>
 					</div>
 				</div>
@@ -127,7 +128,7 @@ flex-wrap: wrap;
 		</div>
 		<!-- /BREADCRUMB -->
 
-		<div id="index" v-cloak>
+		
 		<!-- SECTION -->
 		<div class="section">
 			<!-- container -->
@@ -139,7 +140,64 @@ flex-wrap: wrap;
 						<!-- aside Widget -->
 						<div class="aside">
 							<h3 class="aside-title">Categories</h3>
-							<div class="checkbox-filter">
+						
+								<div v-if="this.categoryParam === 'FARETTI-IN-GESSO-AD-INCASTRO' " class="checkbox-filter">
+
+								<div class="input-checkbox">
+									<input type="checkbox" id="category-1">
+									<label for="category-1">
+										<span></span>
+										Quadrati
+										<small>(120)</small>
+									</label>
+								</div>
+
+								<div class="input-checkbox">
+									<input type="checkbox" id="category-2">
+									<label for="category-2">
+										<span></span>
+										Tondi
+										<small>(740)</small>
+									</label>
+								</div>
+
+								<div class="input-checkbox">
+									<input type="checkbox" id="category-3">
+									<label for="category-3">
+										<span></span>
+										Doppi
+										<small>(1450)</small>
+									</label>
+								</div>
+
+								<div class="input-checkbox">
+									<input type="checkbox" id="category-4">
+									<label for="category-4">
+										<span></span>
+										Con Vetrino
+										<small>(578)</small>
+									</label>
+								</div>
+
+								<div class="input-checkbox">
+									<input type="checkbox" id="category-5">
+									<label for="category-5">
+										<span></span>
+										Design Particolari
+										<small>(120)</small>
+									</label>
+								</div>
+
+								<div class="input-checkbox">
+									<input type="checkbox" id="category-6">
+									<label for="category-6">
+										<span></span>
+										Smartphones
+										<small>(740)</small>
+									</label>
+								</div>
+							</div>
+								<div v-else class="checkbox-filter">
 
 								<div class="input-checkbox">
 									<input type="checkbox" id="category-1">
@@ -195,6 +253,7 @@ flex-wrap: wrap;
 									</label>
 								</div>
 							</div>
+							
 						</div>
 						<!-- /aside Widget -->
 
@@ -373,7 +432,9 @@ flex-wrap: wrap;
     flex-flow: wrap;
 ">
 							<!-- product -->
-							<div v-for="(prodotto,index) in displayedRecords" :key='prodotto.id' class="col-md-4 col-xs-6">
+						<div v-if="param && !displayedRecords.length ">Spiacenti non ci sono risultati per la tua ricerca, controlla la barra di ricerca</div>
+
+							<div v-else  v-for="(prodotto,index) in displayedRecords" :key='prodotto.id' class="col-md-4 col-xs-6">
 								<div class="product">
 									<div class="product-img">
 										<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVrOwGvMU_XKE-RtN0BMH3wAbD-wV0vU7Zkw&usqp=CAU" alt="">
@@ -384,7 +445,7 @@ flex-wrap: wrap;
 									</div>
 									<div class="product-body">
 										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">{_ prodotto.title _}</a></h3>
+										<h3 class="product-name"><a href="{{basePath}}/tksline/product">{_ prodotto.title _}</a></h3>
 										<h4 class="product-price">{_ numberFormat(800) _} <del class="product-old-price">{_ numberFormat(800) _}</del></h4>
 										<div class="product-rating">
 											<i class="fa fa-star"></i>
@@ -405,7 +466,6 @@ flex-wrap: wrap;
 								</div>
 							</div>
 							<!-- /product -->
-<div v-if="!displayedRecords.length">Spiacenti non ci sono risultati per la tua ricerca, controlla la barra di ricerca</div>
 							
 						</div>
 						<!-- /store products -->
@@ -437,10 +497,10 @@ flex-wrap: wrap;
 				<div class="row">
 					<div class="col-md-12">
 						<div class="newsletter">
-							<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+							<p>Iscriviti alla nostra <strong>NEWSLETTER</strong></p>
 							<form>
-								<input class="input" type="email" placeholder="Enter Your Email">
-								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+								<input class="input" type="email" placeholder="La tua Email">
+								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Iscriviti</button>
 							</form>
 							<ul class="newsletter-follow">
 								<li>
@@ -474,9 +534,9 @@ flex-wrap: wrap;
         </script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js">
         </script>
-        <script src="https://cdn.rawgit.com/matfish2/vue-pagination-2/controlled-component/dist/vue-pagination-2.min.js"></script>  
-
 		<script src="{{basepath}}/templates/tksline/js/ZbRangeSlider.js" type="application/javascript"></script>
+
+		<script src="{{basepath}}/templates/tksline/js/vue-pagination.js" type="application/javascript"></script>
 		<script src="{{ basepath }}/templates/tksline/js/jquery.min.js" type="application/javascript"></script>
 		<script src="{{ basepath }}/templates/tksline/js/bootstrap.min.js" type="application/javascript"></script>
 		<script src="{{ basepath }}/templates/tksline/js/slick.min.js" type="application/javascript"></script>

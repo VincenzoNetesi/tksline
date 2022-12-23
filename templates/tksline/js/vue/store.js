@@ -34,6 +34,7 @@ new Vue({
 		selectedFilter: 1,
 		//shit
 		param: null,
+		categoryParam: null,
 
 		classes: null,
 
@@ -408,6 +409,15 @@ new Vue({
 		let uri = await window.location.search;
 		let params = await new URLSearchParams(uri);
 		this.param = await params.get("s");
+		this.categoryParam = await params.get("categoria");
+
+		var anchors =
+			document.querySelectorAll(".page-link") &&
+			document.querySelectorAll(".page-link");
+
+		for (var i = 0; i < anchors.length; i++) {
+			anchors[i].href = "#";
+		}
 	},
 
 	computed: {

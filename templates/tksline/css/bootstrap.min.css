@@ -4426,6 +4426,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
 	padding-bottom: 10px;
 	line-height: 20px;
 }
+
+.navbar-nav:nth-child(1)  li:nth-child(2){
+	margin-right: unset;
+}
 @media (max-width: 767px) {
 	.navbar-nav .open .dropdown-menu {
 		position: static;
@@ -6310,6 +6314,13 @@ button.close {
 	}
 }
 @media (min-width: 992px) {
+	.navbar-nav:nth-child(1)  li:nth-child(2){
+	margin-right: 10px ;
+}
+.navbar__dropdown  li {
+		margin-right: unset !important ;
+
+}
 	.modal-lg {
 		width: 900px;
 	}

@@ -10,8 +10,7 @@ new Vue({
 		searchQuery: null,
 		searchResults: null,
 		hoverProdotti: [],
-		comparisonTick: false,
-		wishlistTick: false,
+
 		hoverModal: 0,
 
 		hasUpdatedCart: false,
@@ -30,6 +29,7 @@ new Vue({
 		counterModal: 1,
 
 		loadingIcone: 0,
+		comparisonList: [],
 	},
 
 	watch: {
@@ -45,7 +45,6 @@ new Vue({
 			}
 		},
 	},
-
 	methods: {
 		debounceSearch(e) {
 			this.typing = "You are typing";
@@ -63,16 +62,12 @@ new Vue({
 			q = Math.ceil(q);
 			return q;
 		},
-		async pushToCompare(item) {
+		pushToCompare(item) {
 			const oldInfo = JSON.parse(localStorage.getItem("comparison"));
 			localStorage.setItem(
 				"comparison",
 				oldInfo ? JSON.stringify([...oldInfo, item]) : JSON.stringify([item])
 			);
-			this.comparisonTick = item.id;
-			setTimeout(() => {
-				this.comparisonTick = false;
-			}, 2000);
 		},
 		numberFormat(data) {
 			const euro = Intl.NumberFormat("it-IT", {
@@ -247,118 +242,8 @@ new Vue({
 			this.classes = 1;
 		},
 
-		swapImage: function (index) {
-			this.hoverProdotti[index] = 1;
-		},
-
-		swapImageLeave: function (index) {
-			this.hoverProdotti[index] = 0;
-		},
-
-		swapImageDue: function (index) {
-			this.hoverProdottiDue.push((this.hoverProdottiDue[index] = 1));
-			console.log(this.hoverProdottiDue);
-		},
-
-		swapImageLeaveDue: function (index) {
-			this.hoverProdottiDue[index] = 0;
-		},
-
-		swapImageTre: function (index) {
-			this.hoverProdottiTre.push((this.hoverProdottiTre[index] = 1));
-		},
-
-		swapImageLeaveTre: function (index) {
-			this.hoverProdottiTre[index] = 0;
-		},
-
-		loadCategorie() {
-			fetch("https://dummyjson.com/products/categories")
-				.then((res) => res.json())
-				.then((res) => (this.categorie = res));
-		},
-
-		getAllProdotti() {
-			fetch("https://dummyjson.com/products")
-				.then((response) => response.json())
-				.then((res) => {
-					if (this.search) {
-						this.prodotti = res.products.filter((prodo) =>
-							prodo.title.toLowerCase().includes(this.search.toLowerCase())
-						);
-					} else {
-						this.prodotti = res.products;
-					}
-				});
-		},
-
-		mountAllProdotti() {
-			//grid indexpage
-			fetch("https://dummyjson.com/products")
-				.then((response) => response.json())
-				.then((res) => {
-					const n = 3;
-					const result = [[], [], []]; //we create it, then we'll fill it
-
-					const wordsPerLine = Math.ceil(res.limit / 3);
-
-					try {
-						console.log(res);
-						for (let line = 0; line < n; line++) {
-							for (let i = 0; i < wordsPerLine; i++) {
-								const value = res.products[i + line * wordsPerLine];
-								if (!value) continue; //avoid adding "undefined" values
-								result[line].push(value);
-							}
-						}
-
-						return result;
-					} catch (error) {
-						console.log(error);
-					}
-				})
-				.then((res) => {
-					this.prodottiUno = res[0];
-					this.prodottiDue = res[1];
-					this.prodottiTre = res[2];
-				})
-				.then(() => {
-					Vue.nextTick(function () {
-						$(".products-slick .product") &&
-							$(".products-slick").each(function () {
-								var $this = $(this),
-									$nav = $this.attr("data-nav");
-
-								$this.slick({
-									slidesToShow: 4,
-									slidesToScroll: 1,
-									autoplay: true,
-									infinite: true,
-									speed: 300,
-									dots: false,
-									arrows: true,
-									appendArrows: $nav ? $nav : false,
-									responsive: [
-										{
-											breakpoint: 991,
-											settings: {
-												slidesToShow: 2,
-												slidesToScroll: 1,
-											},
-										},
-										{
-											breakpoint: 480,
-											settings: {
-												slidesToShow: 1,
-												slidesToScroll: 1,
-											},
-										},
-									],
-								});
-							});
-					});
-				})
-				.catch((error) => console.log(error));
+		removeDuplicates(arr) {
+			return arr.filter((item, index) => arr.indexOf(item) === index);
 		},
 	},
 	created: function () {
@@ -381,7 +266,10 @@ new Vue({
 			}
 		});
 	},
-	mounted() {
-		this.mountAllProdotti();
+	async mounted() {
+		let comparisonItems = await localStorage.getItem("comparison");
+		this.comparisonList = await this.removeDuplicates(
+			JSON.parse(comparisonItems)
+		);
 	},
 });
