@@ -418,6 +418,10 @@ new Vue({
 		for (var i = 0; i < anchors.length; i++) {
 			anchors[i].href = "#";
 		}
+		
+		 if (this.$refs.rolesSelected.checked == true) {
+				alert(5);
+			}
 	},
 
 	computed: {

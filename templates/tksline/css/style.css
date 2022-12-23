@@ -20,7 +20,7 @@
        -moz-background-size: 100% 90% !important;
          -o-background-size: 100% 90% !important;
             background-size: 100% 90% !important;
-    background: url("templates/tksline/img/ita.svg") no-repeat;
+    background: url("../img/ita.svg") no-repeat;
 }
 
 [data-value="en"]::after {
@@ -34,7 +34,7 @@
             background-size: 100% 100% !important;
     width: 29px;
     height: 17px;
-    background: url("templates/tksline/img/ita.svg") no-repeat;
+    background: url("../img/en.svg") no-repeat;
 }
 
 .current {
@@ -802,6 +802,7 @@ footer .section .container {
 .navbar__item {
   position: relative;
 }
+
 .navbar__toggle-menu {
   width: var(--size-toggle);
   height: var(--size-toggle);
@@ -890,7 +891,7 @@ margin-bottom: 1rem;
     position: absolute;
     top: 100%;
     left: 0;
-    min-width: 500px;
+    min-width: 600px;
     height: 500px;
     opacity: 0;
     pointer-events: none;

@@ -34,7 +34,7 @@ new Vue({
 	watch: {
 		// whenever searchQuery changes, this function will run
 		searchQuery(newQuery, oldQuery) {
-			if (newQuery) {
+			if (searchQuery.length > 3) {
 				this.searchResults = null;
 				fetch(`https://dummyjson.com/products/search?q=${newQuery}`)
 					.then((res) => res.json())
