@@ -1,17 +1,18 @@
 new Vue({
-	el: "#top_header",
+	el: "#index",
 
 	delimiters: ["{_", "_}"],
 
 	data: {
-		classes: null,
-		typing: null,
-		debounce: null,
-		searchQuery: null,
-		searchResults: null,
-		hoverProdotti: [],
+		setLogin: true,
+		setReset: false,
+		submitLogin: false,
+		errorsLogin: [],
 
-		hoverModal: 0,
+		formLogin: {
+			email: null,
+			password: null,
+		},
 
 		hasUpdatedCart: false,
 
@@ -29,8 +30,6 @@ new Vue({
 		counterModal: 1,
 
 		loadingIcone: 0,
-		loadingCart: false,
-		cart: [],
 	},
 
 	watch: {
@@ -46,15 +45,8 @@ new Vue({
 			}
 		},
 	},
-	methods: {
-		openCart() {
-			this.loadingCart = true;
-			fetch(`https://dummyjson.com/products/search?q=i`)
-				.then((res) => res.json())
-				.then((data) => (this.cart = data.products))
-				.then(() => (this.loadingCart = false));
-		},
 
+	methods: {
 		debounceSearch(e) {
 			this.typing = "You are typing";
 			this.searchResults = null;
@@ -71,7 +63,17 @@ new Vue({
 			q = Math.ceil(q);
 			return q;
 		},
-
+		async pushToCompare(item) {
+			const oldInfo = JSON.parse(localStorage.getItem("comparison"));
+			localStorage.setItem(
+				"comparison",
+				oldInfo ? JSON.stringify([...oldInfo, item]) : JSON.stringify([item])
+			);
+			this.comparisonTick = item.id;
+			setTimeout(() => {
+				this.comparisonTick = false;
+			}, 2000);
+		},
 		numberFormat(data) {
 			const euro = Intl.NumberFormat("it-IT", {
 				style: "currency",
@@ -233,95 +235,40 @@ new Vue({
 				);
 		},
 
-		increase() {
-			this.counterModal++;
+		checkFormLogin: function (e) {
+			if (e) {
+				e.preventDefault();
+			}
+
+			this.errorsLogin = [];
+
+			if (!this.validEmail(this.formLogin.email)) {
+				this.errorsLogin.push("Inserisci una email valida perfavore.");
+
+				this.submitLogin = false;
+			}
+
+			if (!this.validPassword(this.formLogin.password)) {
+				this.errorsLogin.push("Password invalida");
+
+				this.submitLogin = false;
+			}
+
+			if (!this.errorsLogin.length) {
+				// fetch user data and disappear blocks
+				console.log("success");
+			}
 		},
 
-		decrease() {
-			this.counterModal > 1 && this.counterModal--;
+		validPassword: function (email) {
+			var re = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{6,}$/;
+			return re.test(email);
 		},
 
-		hoverOut: function () {
-			this.classes = 1;
-		},
-
-		swapImage: function (index) {
-			this.hoverProdotti[index] = 1;
-		},
-
-		swapImageLeave: function (index) {
-			this.hoverProdotti[index] = 0;
-		},
-
-		swapImageDue: function (index) {
-			this.hoverProdottiDue.push((this.hoverProdottiDue[index] = 1));
-			console.log(this.hoverProdottiDue);
-		},
-
-		swapImageLeaveDue: function (index) {
-			this.hoverProdottiDue[index] = 0;
-		},
-
-		swapImageTre: function (index) {
-			this.hoverProdottiTre.push((this.hoverProdottiTre[index] = 1));
-		},
-
-		swapImageLeaveTre: function (index) {
-			this.hoverProdottiTre[index] = 0;
-		},
-
-		loadCategorie() {
-			fetch("https://dummyjson.com/products/categories")
-				.then((res) => res.json())
-				.then((res) => (this.categorie = res));
-		},
-
-		getAllProdotti() {
-			fetch("https://dummyjson.com/products")
-				.then((response) => response.json())
-				.then((res) => {
-					if (this.search) {
-						this.prodotti = res.products.filter((prodo) =>
-							prodo.title.toLowerCase().includes(this.search.toLowerCase())
-						);
-					} else {
-						this.prodotti = res.products;
-					}
-				});
-		},
-
-		mountAllProdotti() {
-			//grid indexpage
-			fetch("https://dummyjson.com/products")
-				.then((response) => response.json())
-				.then((res) => {
-					const n = 3;
-					const result = [[], [], []]; //we create it, then we'll fill it
-
-					const wordsPerLine = Math.ceil(res.limit / 3);
-
-					try {
-						console.log(res);
-						for (let line = 0; line < n; line++) {
-							for (let i = 0; i < wordsPerLine; i++) {
-								const value = res.products[i + line * wordsPerLine];
-								if (!value) continue; //avoid adding "undefined" values
-								result[line].push(value);
-							}
-						}
-
-						return result;
-					} catch (error) {
-						console.log(error);
-					}
-				})
-				.then((res) => {
-					this.prodottiUno = res[0];
-					this.prodottiDue = res[1];
-					this.prodottiTre = res[2];
-				})
-
-				.catch((error) => console.log(error));
+		validEmail: function (email) {
+			var re =
+				/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			return re.test(email);
 		},
 	},
 	created: function () {

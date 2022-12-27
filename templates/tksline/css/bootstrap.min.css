@@ -1370,7 +1370,7 @@ a.text-warning:hover {
 	color: #66512c;
 }
 .text-danger {
-	color: #a94442;
+	color: #d10024;
 }
 a.text-danger:focus,
 a.text-danger:hover {
@@ -3712,7 +3712,7 @@ tbody.collapse.in {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	z-index: 990;
+	z-index: 99;
 }
 .pull-right > .dropdown-menu {
 	right: 0;
@@ -6317,6 +6317,7 @@ button.close {
 	.navbar-nav:nth-child(1)  li:nth-child(2){
 	margin-right: 10px ;
 }
+
 .navbar__dropdown  li {
 		margin-right: unset !important ;
 

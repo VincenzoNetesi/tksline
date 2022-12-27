@@ -1,5 +1,5 @@
 new Vue({
-	el: "#top_header",
+	el: "#index",
 
 	delimiters: ["{_", "_}"],
 
@@ -10,11 +10,12 @@ new Vue({
 		searchQuery: null,
 		searchResults: null,
 		hoverProdotti: [],
-
+		comparisonTick: false,
+		wishlistTick: false,
 		hoverModal: 0,
-
+		selectedQuantity: 1,
 		hasUpdatedCart: false,
-
+		cartTick: 1,
 		categorie: null,
 		prodotti: [],
 
@@ -29,8 +30,6 @@ new Vue({
 		counterModal: 1,
 
 		loadingIcone: 0,
-		loadingCart: false,
-		cart: [],
 	},
 
 	watch: {
@@ -46,15 +45,20 @@ new Vue({
 			}
 		},
 	},
-	methods: {
-		openCart() {
-			this.loadingCart = true;
-			fetch(`https://dummyjson.com/products/search?q=i`)
-				.then((res) => res.json())
-				.then((data) => (this.cart = data.products))
-				.then(() => (this.loadingCart = false));
-		},
 
+	methods: {
+		changeQty(selectedQuantity) {
+			this.selectedQuantity = selectedQuantity;
+			if (isNaN(this.selectedQuantity) || this.selectedQuantity < 1)
+				this.selectedQuantity = 1;
+		},
+		verifyNumberQty() {
+			this.selectedQuantity = Number(this.selectedQuantity);
+			if (isNaN(this.selectedQuantity) || this.selectedQuantity < 1)
+				this.selectedQuantity = 1;
+			this.selectedQuantity = Math.ceil(this.selectedQuantity);
+			return this.selectedQuantity;
+		},
 		debounceSearch(e) {
 			this.typing = "You are typing";
 			this.searchResults = null;
@@ -64,14 +68,29 @@ new Vue({
 				this.searchQuery = e.target.value;
 			}, 700);
 		},
-
+		addToCart() {
+			this.cartTick = 2;
+			setTimeout(() => {
+				this.cartTick = 1;
+			}, 3000);
+		},
 		verifyNumberQty(quantity) {
 			q = Number(this.quantity);
 			if (isNaN(q) || q < 1) q = 1;
 			q = Math.ceil(q);
 			return q;
 		},
-
+		async pushToCompare(item) {
+			const oldInfo = JSON.parse(localStorage.getItem("comparison"));
+			localStorage.setItem(
+				"comparison",
+				oldInfo ? JSON.stringify([...oldInfo, item]) : JSON.stringify([item])
+			);
+			this.comparisonTick = item.id;
+			setTimeout(() => {
+				this.comparisonTick = false;
+			}, 2000);
+		},
 		numberFormat(data) {
 			const euro = Intl.NumberFormat("it-IT", {
 				style: "currency",
@@ -320,7 +339,42 @@ new Vue({
 					this.prodottiDue = res[1];
 					this.prodottiTre = res[2];
 				})
+				.then(() => {
+					Vue.nextTick(function () {
+						$(".products-slick .product") &&
+							$(".products-slick").each(function () {
+								var $this = $(this),
+									$nav = $this.attr("data-nav");
 
+								$this.slick({
+									slidesToShow: 4,
+									slidesToScroll: 1,
+									autoplay: true,
+									infinite: true,
+									speed: 300,
+									dots: false,
+									arrows: true,
+									appendArrows: $nav ? $nav : false,
+									responsive: [
+										{
+											breakpoint: 991,
+											settings: {
+												slidesToShow: 2,
+												slidesToScroll: 1,
+											},
+										},
+										{
+											breakpoint: 480,
+											settings: {
+												slidesToShow: 1,
+												slidesToScroll: 1,
+											},
+										},
+									],
+								});
+							});
+					});
+				})
 				.catch((error) => console.log(error));
 		},
 	},
@@ -343,5 +397,9 @@ new Vue({
 				}
 			}
 		});
+	},
+
+	mounted() {
+		this.mountAllProdotti();
 	},
 });

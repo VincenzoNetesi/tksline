@@ -149,7 +149,16 @@ new Vue({
 		removeFromModal() {
 			this.modal = [];
 		},
-
+		removeFromCompare(id) {
+			var items = this.comparisonList;
+			for (var i = 0; i < items.length; i++) {
+				var item = items[i];
+				if (item.id == id) {
+					items.splice(i, 1);
+				}
+			}
+			localStorage.setItem("comparison", JSON.stringify(items));
+		},
 		addtoCart(id, title, price, image) {
 			this.loadingIcone = 1;
 

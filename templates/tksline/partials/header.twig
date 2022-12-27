@@ -85,44 +85,40 @@
 
 								<!-- Cart -->
 								<div class="dropdown">
-									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+									<a @click="openCart()" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 										<i class="fa fa-shopping-cart"></i>
 									
 									</a>
-									<div class="cart-dropdown">
-										<div class="cart-list">
-											<div class="product-widget">
+									<div  class="cart-dropdown">
+										<div v-if="loadingCart === false" class="cart-list">
+											<div v-for="(item,index) in cart"class="product-widget">
 												<div class="product-img">
 													<img src="{{ basepath }}/templates/tksline/img/product-image.png" alt="">
 												</div>
 												<div class="product-body">
-													<h3 class="product-name"><a href="#">product name goes here</a></h3>
-													<h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
+													<h3 class="product-name"><a href="/tksline/product">{_ item.title _}</a></h3>
+													<h4 class="product-price"><span class="qty">1x</span>{_ numberFormat(item.price) _}</h4>
 												</div>
 												<button class="delete"><i class="fa fa-close"></i></button>
 											</div>
 
-											<div class="product-widget">
-												<div class="product-img">
-													<img src="{{ basepath }}/templates/tksline/img/product-image.png" alt="">
-												</div>
-												<div class="product-body">
-													<h3 class="product-name"><a href="#">product name goes here</a></h3>
-													<h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-												</div>
-												<button class="delete"><i class="fa fa-close"></i></button>
-											</div>
+											
 										</div>
+											<div v-else>
+								Loading...
+								</div>
 										<div class="cart-summary">
 											<small>Totale di 3 prodotto(i)</small>
-											<h5>TOTALE: $2940.00</h5>
+											<h5>TOTALE: {_ numberFormat(2940.00) _}</h5>
 										</div>
 										<div class="cart-btns">
 											<a href="#">Vai a carrello</a>
 											<a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
 										</div>
 									</div>
+								
 								</div>
+								
 								<!-- /Cart -->
 
 								<!-- Menu Toogle -->
@@ -154,7 +150,7 @@
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav" style="width:100%">
 						<li class="active"><a href="#">Home</a></li>
-    <li class="navbar__item">
+    <li class="navbar__item" style="max-width: 97px;">
       <a style="background:inherit !important;color:#fff !important"href="#" class="navbar__link">Categorie</a>
       
       <!-- Deslizador del submenu dropdown (Responsive) -->

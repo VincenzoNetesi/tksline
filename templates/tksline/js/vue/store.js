@@ -76,6 +76,9 @@ new Vue({
 		initCollapsed: false,
 
 		cart: [],
+
+		gridViews: 1,
+		checkBoxFilters: [],
 	},
 
 	watch: {
@@ -314,33 +317,8 @@ new Vue({
 			this.counterModal > 1 && this.counterModal--;
 		},
 
-		hoverOut: function () {
-			this.classes = 1;
-		},
-
-		swapImage: function (index) {
-			this.hoverProdotti[index] = 1;
-		},
-
-		swapImageLeave: function (index) {
-			this.hoverProdotti[index] = 0;
-		},
-
-		swapImageDue: function (index) {
-			this.hoverProdottiDue.push((this.hoverProdottiDue[index] = 1));
-			console.log(this.hoverProdottiDue);
-		},
-
-		swapImageLeaveDue: function (index) {
-			this.hoverProdottiDue[index] = 0;
-		},
-
-		swapImageTre: function (index) {
-			this.hoverProdottiTre.push((this.hoverProdottiTre[index] = 1));
-		},
-
-		swapImageLeaveTre: function (index) {
-			this.hoverProdottiTre[index] = 0;
+		setCheckBoxFilters(value) {
+			this.checkBoxFilters.push(value);
 		},
 
 		loadCategorie() {
@@ -418,10 +396,10 @@ new Vue({
 		for (var i = 0; i < anchors.length; i++) {
 			anchors[i].href = "#";
 		}
-		
-		 if (this.$refs.rolesSelected.checked == true) {
-				alert(5);
-			}
+
+		if (this.$refs.rolesSelected.checked == true) {
+			alert(5);
+		}
 	},
 
 	computed: {
@@ -455,6 +433,7 @@ new Vue({
 							item.price > Number(this.min) && item.price < Number(this.max)
 						);
 					})
+					.filter((item) => this.checkBoxFilters.includes(item.category))
 					.splice(startIndex, endIndex);
 			}
 
@@ -481,6 +460,15 @@ new Vue({
 
 		computedMax() {
 			return Number(this.max).toFixed(2);
+		},
+
+		uniqueCheckboxes() {
+			const final = {};
+			for (const { category } of this.prodotti) {
+				final[category] = (final[category] || 0) + 1;
+			}
+			console.log(final);
+			return final;
 		},
 	},
 });

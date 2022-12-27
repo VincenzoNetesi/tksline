@@ -42,7 +42,7 @@
 
 
 		<!-- BREADCRUMB -->
-		<div id="breadcrumb" class="section">
+		<div id="breadcrumb" style="margin-bottom:3rem" class="section container">
 			<!-- container -->
 			<div class="container">
 				<!-- row -->
@@ -64,7 +64,7 @@
 		<!-- /BREADCRUMB -->
 <div id="register" v-cloak>
 		<!-- SECTION -->
-		<div class="section section-style">
+		<div class="section ">
 			<!-- container -->
 			<div class="container">
 				<!-- row -->
@@ -79,31 +79,30 @@
 
         <form class="needs-validation-registrati" novalidate @submit="checkFormRegister($event)">
 
-            <label v-if="!isCompagnia" class="mt-3 text-secondary" for="nome-registrati-singolo">Nome</label>
-            <input v-if="!isCompagnia" @change="checkFormRegister" v-model="formRegister.nome" required autocomplete
+            
+            <input v-if="!isCompagnia" @change="checkFormRegister" v-model="formRegister.nome" required autocomplete placeholder="Nome"
                 name="nome-registrati-singolo" class="form-control" type="text">
 				<br />
-            <label v-if="!isCompagnia" class="mt-1 text-secondary" for="cognome-registrati">Cognome</label>
-            <input v-if="!isCompagnia" @change="checkFormRegister" v-model="formRegister.cognome"
+            
+            <input v-if="!isCompagnia" @change="checkFormRegister" v-model="formRegister.cognome" placeholder="Cognome"
                 name="cognome-registrati" required autocomplete class="form-control " type="text">
 
 <br />
-            <label class="mt-1 text-secondary" for="telefono-registrati">Telefono</label>
-            <input name="telefono-registrati" @change="checkFormRegister" autocomplete class="form-control"
+            
+  
+	        
+            <input name="email-registrati" @change="checkFormRegister" autocomplete class="form-control" placeholder="Email"
+                v-model="formRegister.email" required type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+            <br />
+			          <input name="telefono-registrati" @change="checkFormRegister" autocomplete class="form-control" placeholder="Telefono"
                 v-model="formRegister.telefono" required type="tel"
                 pattern="^(\((00|\+)39\)|(00|\+)39)?(38[890]|34[4-90]|36[680]|33[13-90]|32[89]|35[01]|37[019])(\s?\d{3}\s?\d{3,4}|\d{6,7})$">
       <br />
-	        <label class="mt-1 text-secondary" for="email-registrati">Email</label>
-            <input name="email-registrati" @change="checkFormRegister" autocomplete class="form-control"
-                v-model="formRegister.email" required type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-            <br />
-			<label class="mt-1 text-secondary" for="password-registrati">Password</label>
-            <input name="password-register" @change="checkFormRegister" required autocomplete class="form-control "
+            <input name="password-register" @change="checkFormRegister" required autocomplete class="form-control " placeholder="Password"
                 v-model="formRegister.password" type="password"
                 pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{6,}$">
             <br />
-			<label class="mt-1 text-secondary" for="indirizzo-registrati">Via e numero civico</label>
-            <input name="indirizzo-registrati" @change="checkFormRegister" required autocomplete class="form-control"
+            <input name="indirizzo-registrati" @change="checkFormRegister" required autocomplete class="form-control" placeholder="Indirizzo"
                 v-model="formRegister.indirizzo" type="text">
 
             <div class="row justify-content-between align-items-center">
@@ -169,7 +168,7 @@
     					text-align: center;
     					min-height: 24rem;">
 						<h3 style="z-index:800000000000000;"class="breadcrumb-header">Hai già un'account?</h3>
-				<a href="#" style="max-width:fit-content;margin-left:auto;margin-right:auto;z-index:800000000000000;"class="primary-btn order-submit">Login</a>
+				<a href="/login" style="max-width:fit-content;margin-left:auto;margin-right:auto;z-index:800000000000000;"class="primary-btn order-submit">Login</a>
 
 					</div>
 					
@@ -190,10 +189,10 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="newsletter">
-							<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+							<p>Iscriviti alla nostra <strong>NEWSLETTER</strong></p>
 							<form>
-								<input class="input" type="email" placeholder="Enter Your Email">
-								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+								<input required class="input" type="email" placeholder="Inserisci la tua Email">
+								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Iscriviti</button>
 							</form>
 							<ul class="newsletter-follow">
 								<li>

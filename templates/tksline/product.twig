@@ -149,18 +149,21 @@
 								<div class="qty-label">
 									Quantità
 									<div class="input-number">
-										<input type="number" value="1">
-										<span class="qty-up">+</span>
-										<span class="qty-down">-</span>
+										<input :value="selectedQuantity"
+                                               type="number" name="quantity" min="1" pattern="[0-9]*">
+										<span @click="changeQty(Number(selectedQuantity)+1)" class="qty-up">+</span>
+										<span @click="changeQty(Number(selectedQuantity)-1)" class="qty-down">-</span>
 									</div>
 								</div>
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> aggiungi al carrello</button>
+								<button @click="addToCart()" class="add-to-cart-btn">
+								<i v-if="cartTick === 1" class="fa fa-shopping-cart"></i>
+								<i v-else class="fa fa-check"></i> aggiungi al carrello</button>
 							</div>
 <img width="80" style="margin-bottom:2rem;"
 	src="data:image/png;base64,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" />
 							<ul class="product-btns">
 								<li><a href="#"><i class="fa fa-heart-o"></i> aggiungi ai preferiti</a></li>
-								<li><a href="#"><i class="fa fa-exchange"></i> aggiungi a comparazione</a></li>
+								<li id=""  @click="pushToCompare({id:2})"><a href="#comparison"><i v-if="comparisonTick === 2" class="fa fa-check"></i><i v-else class="fa fa-exchange"></i> aggiungi a comparazione</a></li>
 							</ul>
 
 							<ul class="product-links">
@@ -433,8 +436,8 @@
 								</div>
 								<div class="product-btns">
 									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Aggiungi ai preferiti</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Confronta prodotti</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+		<button @click="pushToCompare(item)" class="add-to-compare"><i v-if="comparisonTick === item.id" class="fa fa-check"></i><i v-else class="fa fa-exchange"></i><span class="tooltipp">Aggiungi alla
+															comparazione</span></button>									<button @click="pushToModal(item)" class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
 								</div>
 							</div>
 							<div class="add-to-cart">
@@ -462,7 +465,7 @@
 						<div class="newsletter">
 							<p>Iscriviti alla nostra <strong>NEWSLETTER</strong></p>
 							<form>
-								<input class="input" type="email" placeholder="Inserisci la tua Email">
+								<input required class="input" type="email" placeholder="Inserisci la tua Email">
 								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Iscriviti</button>
 							</form>
 							<ul class="newsletter-follow">
@@ -487,7 +490,88 @@
 			<!-- /container -->
 		</div>
 		<!-- /NEWSLETTER -->
+				    <div 
+	:class="modal.length > 0  ? 'modalopen modal ' : 'modal' "
+	>
+         <label class="modal-label overlay">
+                <input type="radio" name="modal" value="close" class="modal-radio"/>
+            </label>
+      <div class="content">
+        <div class="top">
+          <label @click="modal = []" class="modal-label close-btn">
+                    <input type="radio" name="modal" value="close" class="modal-radio"/>
+                </label>
+        </div>
+		<div class="body ">
+
+		<img style="width:100%;max-height:50vh" src="{{ basepath }}/templates/tksline/img/product-image.png" alt="modal.title"/>
+        <div style="display:flex;flex-direction:column;justify-content:start;align-items:start;padding:3%">
+		<!-- Product details -->
+					<div class="">
+						<div class="product-details">
+							<h2 class="product-name">Faro ad incastro</h2>
+							<div>
+								<div class="product-rating">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star-o"></i>
+								</div>
+								<a class="review-link" href="#recensione-prodotti">10 recenzione(i) | Aggiungi una recensione</a>
+							</div>
+							<div>
+								<h3 class="product-price">{_ numberFormat(800) _} <del class="product-old-price">{_ numberFormat(800) _}</del></h3>
+								<span class="product-available">Disponibile</span>
+							</div>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+				
+
+							<div class="add-to-cart">
+								<div class="qty-label">
+									Quantità
+									<div class="input-number">
+										<input type="number" value="1">
+										<span class="qty-up">+</span>
+										<span class="qty-down">-</span>
+									</div>
+								</div>
+								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> aggiungi al carrello</button>
+							</div>
+
+							<ul class="product-btns">
+								<li><a href="#"><i class="fa fa-heart-o"></i> aggiungi ai preferiti</a></li>
+								<li><a href="#"><i class="fa fa-exchange"></i> aggiungi a comparazione</a></li>
+							</ul>
+
+							<ul class="product-links">
+								<li>Categoria:</li>
+								<li><a href="#">Headphones</a></li>
+								<li><a href="#">Accessories</a></li>
+							</ul>
+
+							<ul class="product-links">
+								<li>Condividi questo prodotto:</li>
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+								<li><a href="#"><i class="fa fa-envelope"></i></a></li>
+							</ul>
+
+						</div>
+					</div>
+					<!-- /Product details -->
+		  </div>
 		</div>
+      </div>
+    </div>
+
+</div>
+
+<!-- Modal -->
+		</div>
+		
 		</div>
 		{% include "partials/footer.twig" %}
 
@@ -505,7 +589,8 @@
 		<script src="{{ basepath }}/templates/tksline/js/nouislider.min.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/jquery.zoom.min.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/jquery-nice-select-min.js"></script>
-		<script src="{{ basepath }}/templates/tksline/js/vue/index.js"></script>
+		<script src="{{ basepath }}/templates/tksline/js/vue/top_header.js"></script>
+		<script src="{{ basepath }}/templates/tksline/js/vue/product.js"></script>
 		<script src="{{ basepath }}/templates/tksline/js/main.js"></script>
 
 	</body>

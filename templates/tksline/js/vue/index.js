@@ -381,6 +381,7 @@ new Vue({
 			}
 		});
 	},
+
 	mounted() {
 		this.mountAllProdotti();
 	},
