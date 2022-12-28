@@ -204,8 +204,8 @@ flex-wrap: wrap;
 							<h3 class="aside-title">Brand</h3>
 							<div class="checkbox-filter">
 								<div v-for="(value, key) in uniqueCheckboxes" class="input-checkbox">
-									<input type="checkbox" :id="'brand-' + key" :value="key" @change="setCheckBoxFilters(key)">
-									<label :for="'brand-' + key">
+									<input type="checkbox" :id="'brand-' + key" :value="key" >
+									<label @click="setCheckBoxFilters(key)" :for="'brand-' + key">
 										<span></span>
 										{_ key _}
 										<small>{_ value _}</small>
@@ -368,7 +368,7 @@ flex-wrap: wrap;
 										</div>
 									</div>
 									<div class="product-body">
-										<p class="product-category">Categoria</p>
+										<p class="product-category">{_ prodotto.category _}</p>
 										<h3 class="product-name"><a href="{{basePath}}/tksline/product">{_ prodotto.title _}</a></h3>
 										<h4 class="product-price">{_ numberFormat(prodotto.price) _} <del class="product-old-price">{_ numberFormat(800) _}</del></h4>
 										<div class="product-rating">

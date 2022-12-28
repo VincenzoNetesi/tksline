@@ -317,8 +317,17 @@ new Vue({
 			this.counterModal > 1 && this.counterModal--;
 		},
 
-		setCheckBoxFilters(value) {
-			this.checkBoxFilters.push(value);
+		setCheckBoxFilters(valueItem) {
+			if (!this.checkBoxFilters.includes(valueItem)) {
+				// ✅ only runs if value not in array
+				this.checkBoxFilters.push(valueItem);
+				console.log(this.checkBoxFilters);
+			} else
+				this.checkBoxFilters = this.checkBoxFilters.filter(function (el) {
+					return el != valueItem;
+				});
+
+			console.log(this.checkBoxFilters);
 		},
 
 		loadCategorie() {
@@ -396,10 +405,6 @@ new Vue({
 		for (var i = 0; i < anchors.length; i++) {
 			anchors[i].href = "#";
 		}
-
-		if (this.$refs.rolesSelected.checked == true) {
-			alert(5);
-		}
 	},
 
 	computed: {
@@ -421,37 +426,64 @@ new Vue({
 
 				const endIndex = startIndex + this.perPage;
 
-				return this.prodotti
+				return this.checkBoxFilters.length > 5
+					? this.prodotti
 
-					.filter((item) => {
-						return (
-							item.title.toLowerCase().search(this.param.toLowerCase()) >= 0
-						);
-					})
-					.filter((item) => {
-						return (
-							item.price > Number(this.min) && item.price < Number(this.max)
-						);
-					})
-					.filter((item) => this.checkBoxFilters.includes(item.category))
-					.splice(startIndex, endIndex);
+							.filter((item) => {
+								return (
+									item.title.toLowerCase().search(this.param.toLowerCase()) >= 0
+								);
+							})
+							.filter((item) => {
+								return (
+									item.price > Number(this.min) && item.price < Number(this.max)
+								);
+							})
+							.filter((item) => this.checkBoxFilters.includes(item.category))
+							.splice(startIndex, endIndex)
+					: this.prodotti
+							.filter((item) => {
+								return (
+									item.title.toLowerCase().search(this.param.toLowerCase()) >= 0
+								);
+							})
+							.filter((item) => {
+								return (
+									item.price > Number(this.min) && item.price < Number(this.max)
+								);
+							})
+							.splice(startIndex, endIndex);
 			}
 
-			this.computedLength = this.prodotti.filter((item) => {
-				return item.price >= Number(this.min) && item.price <= Number(this.max);
-			}).length;
+			this.computedLength = this.prodotti
+				.filter((item) => {
+					return (
+						item.price >= Number(this.min) && item.price <= Number(this.max)
+					);
+				})
+				.filter((item) => this.checkBoxFilters.includes(item.category)).length;
 
 			const startIndex = this.perPage * (this.page - 1);
 
 			const endIndex = startIndex + this.perPage;
 
-			return this.prodotti
+			return this.checkBoxFilters.length > 2
+				? this.prodotti
 
-				.filter((item) => {
-					return item.price > Number(this.min) && item.price < Number(this.max);
-				})
-
-				.splice(startIndex, endIndex);
+						.filter((item) => {
+							return (
+								item.price > Number(this.min) && item.price < Number(this.max)
+							);
+						})
+						.filter((item) => this.checkBoxFilters.includes(item.category))
+						.splice(startIndex, endIndex)
+				: this.prodotti
+						.filter((item) => {
+							return (
+								item.price > Number(this.min) && item.price < Number(this.max)
+							);
+						})
+						.splice(startIndex, endIndex);
 		},
 
 		computedMin() {
