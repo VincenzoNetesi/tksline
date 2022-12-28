@@ -439,7 +439,12 @@ new Vue({
 									item.price > Number(this.min) && item.price < Number(this.max)
 								);
 							})
-							.filter((item) => this.checkBoxFilters.includes(item.category))
+							.filter(
+								function (e) {
+									return this.indexOf(e.category) == -1;
+								},
+								[...this.checkBoxFilters]
+							)
 							.splice(startIndex, endIndex)
 					: this.prodotti
 							.filter((item) => {
@@ -467,7 +472,7 @@ new Vue({
 
 			const endIndex = startIndex + this.perPage;
 
-			return this.checkBoxFilters.length > 2
+			return this.checkBoxFilters.length
 				? this.prodotti
 
 						.filter((item) => {
@@ -475,7 +480,7 @@ new Vue({
 								item.price > Number(this.min) && item.price < Number(this.max)
 							);
 						})
-						.filter((item) => this.checkBoxFilters.includes(item.category))
+						.filter((el) => this.checkBoxFilters.includes(el.category))
 						.splice(startIndex, endIndex)
 				: this.prodotti
 						.filter((item) => {
